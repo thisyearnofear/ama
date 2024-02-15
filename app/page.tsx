@@ -11,6 +11,9 @@ interface AMA {
   bio: string
 }
 
+const vitalikIconUrl =
+  'https://res.cloudinary.com/dsneebaw0/image/upload/v1708030863/ethereum.svg'
+
 export default function Home() {
   const [warpcastURL, setWarpcastURL] = useState('')
   const [isHovered, setIsHovered] = useState(false)
@@ -35,7 +38,12 @@ export default function Home() {
           <h3 className="mb-2 text-center">Hosted by DWR</h3>
           <ul className="flex flex-col items-center">
             {/* Render list items without icons */}
-            <li className="py-1 text-center">
+            <li className="py-1 text-center flex items-center">
+              <img
+                src={vitalikIconUrl}
+                alt="Vitalik Icon"
+                className="icon-size mr-2"
+              />
               <Link
                 href="/ama?url=https://warpcast.com/dwr.eth/0x390ae86a"
                 className="underline"
