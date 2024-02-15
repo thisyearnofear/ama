@@ -59,5 +59,6 @@ export const Icon: React.FC<IconProps> = ({ type, ...props }) => {
     console.error(`Invalid icon type: ${type}`)
     return null // or return a default icon
   }
+  console.log(`Rendering icon for type: ${type}`)
   return <SvgIcon {...props} />
 }
