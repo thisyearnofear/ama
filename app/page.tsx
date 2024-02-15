@@ -1,110 +1,124 @@
 'use client'
 
-import { useState } from 'react'
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
+
+interface AMA {
+  id?: string
+  date: string
+  subject: string
+  person: string
+  bio: string
+}
 
 export default function Home() {
-  const [url, setUrl] = useState('')
+  const [warpcastURL, setWarpcastURL] = useState('')
+  const [isHovered, setIsHovered] = useState(false)
+  const [upcomingAMAs, setUpcomingAMAs] = useState<AMA[]>([])
+  const [newAMA, setNewAMA] = useState<AMA>({
+    date: '',
+    subject: '',
+    person: '',
+    bio: '',
+  })
 
   return (
-    <div>
-      <label
-        htmlFor="price"
-        className="block text-sm font-medium leading-6 text-gray-900"
-      >
-        Warpcast AMA URL
-      </label>
-      <div className="relative mt-2 rounded-md shadow-sm max-w-md">
-        <input
-          type="text"
-          name="price"
-          id="price"
-          className={`
-            block w-full rounded-md py-1.5 px-3
-            ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-            focus:outline-0 focus:ring-1 focus:ring-slate-500
-            sm:text-sm sm:leading-6
-          `}
-          placeholder="ex. https://warpcast.com/dwr.eth/0x87e91802"
-          onChange={(e) => setUrl(e.target.value)}
-        />
-      </div>
-      <div className="mt-4">
-        <a
-          className="p-2 px-4 rounded border hover:border-slate-500 text-sm"
-          href={`/ama?url=${url}`}
-        >
-          Publish AMA
-        </a>
+    <div className="flex flex-col items-center py-12 w-full text-center">
+      {/* Heading */}
+      <h2 className="text-4xl font-bold py-6">AMACASTER</h2>
+      <h3 className="text-xl font-medium py-2">Previously</h3>
+
+      {/* Two-column layout for names */}
+      <div className="flex justify-center w-full gap-8 mb-4">
+        {/* Column 1 */}
+        <div className="flex-1 max-w-md">
+          <h3 className="mb-2 text-center">Hosted by DWR</h3>
+          <ul className="flex flex-col items-center">
+            {/* Render list items without icons */}
+            <li className="py-1 text-center">
+              <Link
+                href="/ama?url=https://warpcast.com/dwr.eth/0x390ae86a"
+                className="underline"
+              >
+                Vitalik Buterin
+              </Link>
+            </li>
+            {/* Repeat for other list items */}
+          </ul>
+        </div>
+
+        {/* Column 2 */}
+        <div className="flex-1 max-w-md">
+          <h3 className="mb-2 text-center">Hosted by Community</h3>
+          <ul className="flex flex-col items-center">
+            {/* Render list items without icons */}
+            <li className="py-1 text-center">
+              <Link
+                href="/ama?url=https://warpcast.com/jam/0x30a0f030"
+                className="underline"
+              >
+                @colin
+              </Link>
+            </li>
+            {/* Repeat for other list items */}
+          </ul>
+        </div>
       </div>
 
-      <div className="mt-12 text-xs">
-        Upcoming:
-        <ul className="text-slate-500 text-xs">
-          <li className="mt-1">garrytan (4th January - 10am PT)</li>
-          <li className="mt-1">cdixon.eth (31st January - 10am PT)</li>
-        </ul>
-      </div>
+      {/* Centered content below */}
+      <div>
+        {/* Other sections without icons */}
+        <h3 className="text-lg mb-2">Other Past AMAs</h3>
+        {/* Render input and link without icons */}
 
-      <div className="mt-12 text-xs">
-        Past:
-        <ul className="text-slate-500 text-xs">
-          <li className="mt-1">
+        <br />
+
+        <h3 className="text-lg mb-2">Improve Your Question</h3>
+        {/* Render iframe without icons */}
+
+        <br />
+
+        <div className="flex flex-col items-center w-full">
+          {/* Render upcoming AMAs without icons */}
+        </div>
+
+        {/* Lore section without icons */}
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <h3 className="text-lg mb-2">Lore</h3>
+          <p>
+            inverse AMA{' '}
             <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0xd39ac80f"
-              target="_blank"
+              href="https://warpcast.com/samantha/0xc9010d04"
+              className="underline"
             >
-              elad
+              @Samantha
             </a>
-          </li>
-          <li className="mt-1">
+            <br />
+            wordcloud collection{' '}
             <a
-              href="/ama?url=https://warpcast.com/yb/0x7d5219e5"
-              target="_blank"
+              href="https://warpcast.com/ghostlinkz.eth/0x58ce6ae7"
+              className="underline"
             >
-              horsefacts.eth
+              @ghostlinkz
             </a>
-          </li>
-          <li className="mt-1">
-            <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x08541631"
-              target="_blank"
-            >
-              toly
+            {/* Repeat for other lore items */}
+            <br />
+            built by @papa
+          </p>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '10px',
+              marginTop: '20px',
+            }}
+          >
+            <a href="https://twitter.com/papajimjams">
+              {/* Render social media links without icons */}
             </a>
-          </li>
-          <li className="mt-1">
-            <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x029f7cce"
-              target="_blank"
-            >
-              balajis.eth
-            </a>
-          </li>
-          <li className="mt-1">
-            <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x390ae86a"
-              target="_blank"
-            >
-              vitalik.eth
-            </a>
-          </li>
-          <li className="mt-1">
-            <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x7735946a"
-              target="_blank"
-            >
-              barmstrong
-            </a>
-          </li>
-          <li className="mt-1">
-            <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x87e91802"
-              target="_blank"
-            >
-              fredwilson.eth
-            </a>
-          </li>
-        </ul>
+            {/* Repeat for other social media links */}
+          </div>
+        </div>
       </div>
     </div>
   )
