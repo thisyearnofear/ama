@@ -73,6 +73,7 @@ export async function generateMetadata(
   })
 
   const orderedThreads = items.sort((a, b) => b.likes - a.likes)
+  // sourcery skip: use-object-destructuring
   const hash = orderedThreads[pageNumber].hash
 
   return {
