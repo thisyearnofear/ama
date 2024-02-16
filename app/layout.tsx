@@ -21,7 +21,7 @@ export default function RootLayout({
         <main className="container max-w-4xl mx-auto px-8 flex flex-col min-h-screen justify-between">
           <div className="my-8">{children}</div>
           <footer className="text-md border-t pt-8 my-8 h-10">
-            <a href="https://github.com/alvesjtiago/ama" target="_blank">
+            <a href="https://github.com/thisyearnofear" target="_blank">
               <DiGithubAlt />
             </a>
           </footer>
